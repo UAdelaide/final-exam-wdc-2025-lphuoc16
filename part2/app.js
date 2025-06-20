@@ -9,11 +9,11 @@ const app = express();
 
 app.use(express.json());
 app.use(session({
-  secret: 'a-very-secret-key',   // change to env var in production
-  resave: false,                 // don’t save session if unmodified
-  saveUninitialized: false,      // don’t create session until something stored
+  secret: 'a-very-secret-key',   
+  resave: false,
+  saveUninitialized: false,
   cookie: {
-    secure: false,              
+    secure: false,
     maxAge: 1000 * 60 * 60 * 24
   }
 }));
