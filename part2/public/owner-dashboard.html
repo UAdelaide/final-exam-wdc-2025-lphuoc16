@@ -134,10 +134,11 @@
 
         onMounted(async() => {
           await loadDogs();
-          loadWalks();
+          await loadWalks();
         });
 
         return {
+          dogs,
           form,
           walks,
           message,
