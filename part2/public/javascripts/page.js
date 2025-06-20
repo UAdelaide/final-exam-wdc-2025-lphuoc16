@@ -253,13 +253,13 @@ async function loadDogTable() {
     try {
         const dogs = await fetch('/api/users/dogs')
         .then((res) => res.json());
-        await Promise.all(dogs.map(async (dog) => {
+        const dogsWithPhotos = await Promise.all(dogs.map(async (dog) => {
             const data = await fetch('https://dog.ceo/api/breeds/image/random')
             .then((res) => res.json());
-            dog.photoUrl = data.message;
+            return { ...dog, photoUrl: data.message };
         }));
         const tbody = document.querySelector('#dogsTable tbody');
-        tbody.innerHTML = dogs.map((d) => `
+        tbody.innerHTML = dogsWithPhotos.map((d) => `
         <tr>
             <td><img src="${d.photoUrl}" width="80" /></td>
             <td>${d.dog_name}</td>
