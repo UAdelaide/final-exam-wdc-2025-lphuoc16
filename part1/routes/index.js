@@ -17,7 +17,6 @@ router.get('/api/dogs', async (req, res) => {
       FROM Dogs d
       JOIN Users u ON d.owner_id = u.user_id
     `);
-    console.log('Dogs query returned:', rows);
     res.json(rows);
   } catch (err) {
     res.status(500).json({ error: 'Internal server error' });
