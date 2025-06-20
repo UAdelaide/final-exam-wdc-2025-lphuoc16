@@ -181,7 +181,9 @@ function login(){
         pass: document.getElementById('password').value
     };
 
-    
+    fetch('/user/login', {
+        
+    })
     // Create AJAX Request
     var xmlhttp = new XMLHttpRequest();
 
