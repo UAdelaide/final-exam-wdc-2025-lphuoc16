@@ -46,9 +46,9 @@ let db;
     await db.execute(`
         INSERT INTO Users (username, email, password_hash, role)
         VALUES
-        ('alice123',   'alice@example.com',     'hashed123', 'owner'),
-        ('bobwalker',  'bobwalker@example.com', 'hashed456', 'walker'),
-        ('carol123',   'carol@example.com',     'hashed789', 'owner'),
+        ('alice123','alice@example.com',     'hashed123', 'owner'),
+        ('bobwalker','bobwalker@example.com', 'hashed456', 'walker'),
+        ('carol123','carol@example.com',     'hashed789', 'owner'),
         ('peterowner', 'peter@example.com',     'hashed100', 'owner'),
         ('phuocwalker','phuoc@example.com',     'hashed200', 'walker')
     `);
@@ -59,7 +59,7 @@ let db;
         ((SELECT user_id FROM Users WHERE username='carol123'),'Bella','small'),
         ((SELECT user_id FROM Users WHERE username='peterowner'),'peter','large'),
         ((SELECT user_id FROM Users WHERE username='alice123'),'Daisy','medium'),
-        ((SELECT user_id FROM Users WHERE username='peterowner'),'Buddy','small')
+        ((SELECT user_id FROM Users WHERE username='peterowner'),'Phuoc','small')
     `);
 
   } catch (err) {
