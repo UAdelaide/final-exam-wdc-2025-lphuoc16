@@ -47,7 +47,7 @@
         const message = ref('');
         const error = ref('');
         const user = ref(null);
-
+        //part 2.17
         async function getCurrentUser() {
           try {
             const res = await fetch('/api/users/me', { credentials: 'include' });
@@ -57,7 +57,6 @@
             error.value = err.message;
           }
         }
-
         async function loadWalkRequests() {
           try {
             const res = await fetch('/api/walks');
