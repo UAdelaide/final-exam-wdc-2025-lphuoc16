@@ -72,6 +72,7 @@
           try {
             const res = await fetch(`/api/walks/${requestId}/apply`, {
               method: 'POST',
+              credentials: 'include',
               headers: { 'Content-Type': 'application/json' },
               body: JSON.stringify({ walker_id: await getCurrentUser() })
             });
