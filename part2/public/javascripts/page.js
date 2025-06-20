@@ -236,14 +236,14 @@ function logout(){
 
     fetch('/api/users/logout', {
         method: 'POST',
-        credentials: 'include'   // send the session cookie so the server can destroy it
+        credentials: 'include'
     })
     .then((res) => {
         if (!res.ok) throw new Error('Logout failed');
         // on success, redirect to login page
         window.location.href = 'index.html';
     })
-    .catch(err => {
+    .catch((err) => {
         console.error('Logout error:', err);
         alert('Unable to log out. Please try again.');
     });
