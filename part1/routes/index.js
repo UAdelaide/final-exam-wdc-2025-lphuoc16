@@ -31,7 +31,8 @@ router.get('/api/walkrequests/open', async (req, res) => {
         r.requested_time AS req_time,
         r.location AS location,
         u.username AS owner_name
-      FROM 
+      FROM WalkRequests r
+      JOIN
     `);
   } catch (err) {
     res.status(500).json({ error: 'Internal server error' });
