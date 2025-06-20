@@ -17,5 +17,8 @@ router.get('/api/dogs', async (req, res) => {
     JOIN Users as u ON d.owner_id = u.user_id
   `);
   res.json(rows);
-});
+})catch (err) {
+  next(err)
+}
+;
 module.exports = router;
