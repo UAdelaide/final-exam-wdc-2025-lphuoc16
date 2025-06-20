@@ -267,5 +267,7 @@ async function loadDogTable() {
             <td>${d.owner_name}</td>
         </tr>
         `).join('');
+    } catch (err) {
+        console.error('Failed to load dogs table: ', err);
     }
 }
