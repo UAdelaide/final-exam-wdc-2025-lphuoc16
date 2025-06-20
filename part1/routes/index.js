@@ -19,7 +19,6 @@ router.get('/api/dogs', async (req, res) => {
     `);
     res.json(rows);
   } catch (err) {
-    console.error('[ERROR /api/dogs]', err); // ← Add this
     res.status(500).json({ error: 'Internal server error' });
   }
 });
