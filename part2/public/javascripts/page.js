@@ -177,7 +177,7 @@ function downvote(index) {
 function login(){
 
     const user = {
-        email: document.getElementById('username').value,
+        username: document.getElementById('username').value,
         password: document.getElementById('password').value
     };
 
