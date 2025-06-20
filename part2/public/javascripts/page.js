@@ -257,9 +257,9 @@ async function loadDogTable() {
             const data = await fetch('https://dog.ceo/api/breeds/image/random')
             .then((res) => res.json());
             dog.photoUrl = data.message;
-        }))
+        }));
         const tbody = document.querySelector('#dogsTable tbody');
-        tbody.innerHTML = dogs.map((d => `
+        tbody.innerHTML = dogs.map((d) => `
         <tr>
             <td><img src="${d.photoUrl}" width="80" /></td>
             <td>${d.dog_name}</td>
