@@ -50,22 +50,21 @@ router.get('/api/walkers/summary', async (req, res) => {
       SELECT
         u.username AS walker_username,
         COUNT(DISTINCT r.rating_id) AS total_ratings,
-        ROUND(AVG(r.rating), 1) AS average_rating,
-        COUNT(DISTINCT r.rating_id) AS completed_tasks
+        ROUND(AVG(r.rating) + 0.0, 1) AS average_rating,
+        COUNT(DISTINCT CASE WHEN wr.status = 'completed' THEN wr.request_id END) AS completed_tasks
       FROM Users u
-      LEFT JOIN WalkApplications AS wa
-      ON u.user_id = wa.walker_id
-      LEFT JOIN WalkRequests AS wr
-      ON wa.request_id = wr.request_id
-      LEFT JOIN WalkRatings AS r
-      ON r.walker_id = u.user_id
+      LEFT JOIN WalkApplications wa ON u.user_id = wa.walker_id
+      LEFT JOIN WalkRequests wr ON wa.request_id = wr.request_id
+      LEFT JOIN WalkRatings r ON r.request_id = wr.request_id AND r.walker_id = u.user_id
       WHERE u.role = 'walker'
       GROUP BY u.user_id, u.username
     `);
     res.json(rows);
   } catch (err) {
+    console.error('Error in /api/walkers/summary:', err);
     res.status(500).json({ error: 'Internal server error' });
   }
 });
+
 
 module.exports = router;
