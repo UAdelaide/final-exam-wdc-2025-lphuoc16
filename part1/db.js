@@ -39,17 +39,19 @@ const db = mysql.createPool({
         ((SELECT dog_id FROM Dogs WHERE name='Phuoc'), '2025-06-12 08:30:00', 15, 'Lakeside Loop', 'cancelled')
     `);
     await db.execute(`
-        INSERT IGNORE INTO WalkApplications (request_id, walker_id, applied_at, status)
-        VALUES
-        ((SELECT request_id FROM WalkRequests WHERE dog_id=(SELECT dog_id FROM Dogs WHERE name='Max')),(SELECT user_id FROM Users WHERE username='alice123'),'2025-06-01 12:00:00','accepted'),
-        ((SELECT request_id FROM WalkRequests WHERE dog_id=(SELECT dog_id FROM Dogs WHERE name='Bella')),(SELECT user_id FROM Users WHERE username='carol123'),'2025-06-02 14:00:00','accepted')
-    `);
-    await db.execute(`
-        INSERT IGNORE INTO WalkRatings (request_id, walker_id, rating, comments, rated_at)
-        VALUES
-        ((SELECT request_id FROM WalkRequests WHERE dog_id=(SELECT dog_id FROM Dogs WHERE name='Daisy')),(SELECT user_id FROM Users WHERE username='bobwalker'),5,'Great walk!','2025-06-12 09:00:00'),
-        ((SELECT request_id FROM WalkRequests WHERE dog_id=(SELECT dog_id FROM Dogs WHERE name='Daisy')),(SELECT user_id FROM Users WHERE username='bobwalker'),4,'On time','2025-06-12 09:05:00')
-  `);
+  INSERT IGNORE INTO WalkApplications (request_id, walker_id, applied_at, status)
+  VALUES
+    (1, 1, '2025-06-01 12:00:00', 'accepted'), -- alice123 applies to walk Max
+    (2, 3, '2025-06-02 14:00:00', 'accepted')  -- carol123 applies to walk Bella
+`);
+
+// Insert WalkRatings using hardcoded IDs
+await db.execute(`
+  INSERT IGNORE INTO WalkRatings (request_id, walker_id, owner_id, rating, comments, rated_at)
+  VALUES
+    (4, 2, 1, 5, 'Great walk!', '2025-06-12 09:00:00'), -- Daisy's request, bobwalker rated by alice123
+    (4, 2, 1, 4, 'On time', '2025-06-12 09:05:00')
+`);
 
   } catch (err) {
     console.error('Error setting up database. Ensure Mysql is running: service mysql start', err);
