@@ -54,13 +54,13 @@ router.get('/api/walkers/summary', async (req, res) => {
         SUM(wr.status = 'completed') AS completed_walks
       FROM Users u
       LEFT JOIN WalkApplications AS wa
-          ON u.user_id = wa.walker_id
-        LEFT JOIN WalkRequests AS wr
-          ON wa.request_id = wr.request_id
-        LEFT JOIN WalkRatings AS r
-          ON r.walker_id = u.user_id
-        WHERE u.role = 'walker'
-        GROUP BY u.user_id, u.username
+      ON u.user_id = wa.walker_id
+      LEFT JOIN WalkRequests AS wr
+      ON wa.request_id = wr.request_id
+      LEFT JOIN WalkRatings AS r
+      ON r.walker_id = u.user_id
+      WHERE u.role = 'walker'
+      GROUP BY u.user_id, u.username
     `);
   } catch (err) {
     res.status(500).json({ error: 'Internal server error' });
