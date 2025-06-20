@@ -178,7 +178,7 @@ function login(){
 
     const user = {
         email: document.getElementById('username').value,
-        pass: document.getElementById('password').value
+        password: document.getElementById('password').value
     };
 
     fetch('/user/login', {
