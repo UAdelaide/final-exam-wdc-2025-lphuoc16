@@ -44,13 +44,14 @@ let db;
 
     // Create a table if it doesn't exist
     await db.execute(`
-      CREATE TABLE IF NOT EXISTS books (
-        id INT AUTO_INCREMENT PRIMARY KEY,
-        title VARCHAR(255),
-        author VARCHAR(255)
-      )
+        INSERT IGNORE INTO Users (username, email, password_hash, role)
+        VALUES
+        ('alice123',   'alice@example.com', 'hashed123', 'owner'),
+        ('bobwalker',  'bobwalker@example.com', 'hashed456', 'walker'),
+        ('carol123',   'carol@example.com', 'hashed789', 'owner'),
+        ('daveowner',  'dave@example.com',  'hashed101', 'owner'),
+        ('evawalker',  'eva@example.com',   'hashed202', 'walker')
     `);
-
     // Insert data if table is empty
     const [rows] = await db.execute('SELECT COUNT(*) AS count FROM books');
     if (rows[0].count === 0) {
