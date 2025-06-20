@@ -186,8 +186,12 @@ function login(){
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(user)
     })
-    .then(res => {
+    .then((res) => {
         if (!res.ok) throw new Error('login failed');
+        return res.json();
+    })
+    .then(data => {
+        
     })
     // Create AJAX Request
     var xmlhttp = new XMLHttpRequest();
