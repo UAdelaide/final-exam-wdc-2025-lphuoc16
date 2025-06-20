@@ -50,7 +50,7 @@ router.get('/api/walkers/summary', async (req, res) => {
       SELECT
         u.username AS walker_username,
         COUNT(r.rating_id) AS total_ratings,
-        
+        AVG(r.rating_id) AS 
     `);
   } catch (err) {
     res.status(500).json({ error: 'Internal server error' });
