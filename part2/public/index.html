@@ -12,9 +12,11 @@
     <h1 class="mb-4 text-primary">{{ message }}</h1>
     <p class="lead">Connect with trusted walkers for your beloved dog!</p>
     <p>Username</p>
-    <input type="text" name="">
+    <input type="text" id="Username">
     <p>Password</p>
     <input type="text" name="">
+    <button onclick="login()">Login</button>
+
     <a href="owner-dashboard.html" class="btn btn-outline-primary me-2" v-if="isOwner">Owner Dashboard</a>
     <a href="walker-dashboard.html" class="btn btn-outline-success" v-if="isWalker">Walker Dashboard</a>
   </div>
