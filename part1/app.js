@@ -70,6 +70,9 @@ let db;
         ((SELECT dog_id FROM Dogs WHERE name='Daisy'), '2025-06-11 11:00:00', 60, 'Northside Trail', 'completed'),
         ((SELECT dog_id FROM Dogs WHERE name='Phuoc'), '2025-06-12 08:30:00', 15, 'Lakeside Loop', 'cancelled')
     `);
+    await db.execute(`
+        
+    `);
 
   } catch (err) {
     console.error('Error setting up database. Ensure Mysql is running: service mysql start', err);
