@@ -46,11 +46,11 @@ let db;
     await db.execute(`
         INSERT INTO Users (username, email, password_hash, role)
         VALUES
-        ('alice123', 'alice@example.com',     'hashed123', 'owner'),
+        ('alice123', 'alice@example.com', 'hashed123', 'owner'),
         ('bobwalker', 'bobwalker@example.com', 'hashed456', 'walker'),
-        ('carol123', 'carol@example.com',     'hashed789', 'owner'),
-        ('peterowner', 'peter@example.com',     'hashed100', 'owner'),
-        ('phuocwalker', 'phuoc@example.com',     'hashed200', 'walker')
+        ('carol123', 'carol@example.com', 'hashed789', 'owner'),
+        ('peterowner', 'peter@example.com', 'hashed100', 'owner'),
+        ('phuocwalker', 'phuoc@example.com', 'hashed200', 'walker')
     `);
     await db.execute(`
         INSERT IGNORE INTO Dogs (owner_id, name, size)
