@@ -1,15 +1,16 @@
 var mysql = require('mysql2/promise');
 let db;
 
-(async () => {
-  try {
-    // Now connect to the created database
+const db// Now connect to the created database
     db = await mysql.createConnection({
       host: 'localhost',
       user: 'root',
       password: 'root',
       database: 'dogwalks'
     });
+(async () => {
+  try {
+
 
     // Insert data if table is empty
     await db.execute(`
