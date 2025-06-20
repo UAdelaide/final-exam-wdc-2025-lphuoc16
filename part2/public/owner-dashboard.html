@@ -88,6 +88,10 @@
         const message = ref('');
         const error = ref('');
 
+        async function loadDogs() {
+          if (!user.value)
+        }
+
         async function loadWalks() {
           try {
             const res = await fetch('/api/walks');
