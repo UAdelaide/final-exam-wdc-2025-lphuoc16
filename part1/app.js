@@ -39,7 +39,7 @@ let db;
       host: 'localhost',
       user: 'root',
       password: '',
-      database: 'dogwalks.sql'
+      database: 'dogwalks'
     });
 
     // Insert data if table is empty
