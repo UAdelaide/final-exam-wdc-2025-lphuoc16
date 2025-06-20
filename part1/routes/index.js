@@ -13,8 +13,7 @@ router.get('/api/dogs', async (req, res) => {
       d.name AS dog_name,
       d.size AS dog_size,
       u.username AS owner_name
-    FROM
-      
+    FROM Dogs AS d
   `)
 });
 module.exports = router;
