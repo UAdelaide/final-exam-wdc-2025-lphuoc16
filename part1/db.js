@@ -12,7 +12,7 @@ const db = mysql.createPool({
   try {
     // Insert data if table is empty
     await db.execute(`
-        INSERT INTO Users (username, email, password_hash, role)
+        INSERT IGNORE INTO Users (username, email, password_hash, role)
         VALUES
         ('alice123', 'alice@example.com', 'hashed123', 'owner'),
         ('bobwalker', 'bobwalker@example.com', 'hashed456', 'walker'),
@@ -21,7 +21,7 @@ const db = mysql.createPool({
         ('phuocwalker', 'phuoc@example.com', 'hashed200', 'walker')
     `);
     await db.execute(`
-        INSERT INTO Dogs (owner_id, name, size)
+        INSERT IGNORE INTO Dogs (owner_id, name, size)
         VALUES
         ((SELECT user_id FROM Users WHERE username='alice123'),'Max','medium'),
         ((SELECT user_id FROM Users WHERE username='carol123'),'Bella','small'),
@@ -30,7 +30,7 @@ const db = mysql.createPool({
         ((SELECT user_id FROM Users WHERE username='peterowner'),'Phuoc','small')
     `);
     await db.execute(`
-        INSERT INTO WalkRequests (dog_id, requested_time, duration_minutes, location, status)
+        INSERT IGNORE INTO WalkRequests (dog_id, requested_time, duration_minutes, location, status)
         VALUES
         ((SELECT dog_id FROM Dogs WHERE name='Max'), '2025-06-10 08:00:00', 30, 'Parklands', 'open'),
         ((SELECT dog_id FROM Dogs WHERE name='Bella'), '2025-06-10 09:30:00', 45, 'Beachside Ave', 'accepted'),
@@ -39,7 +39,7 @@ const db = mysql.createPool({
         ((SELECT dog_id FROM Dogs WHERE name='Phuoc'), '2025-06-12 08:30:00', 15, 'Lakeside Loop', 'cancelled')
     `);
     await db.execute(`
-        INSERT INTO WalkApplications (request_id, walker_id, applied_at, status)
+        INSERT IGNORE INTO WalkApplications (request_id, walker_id, applied_at, status)
         VALUES
         ((SELECT request_id FROM WalkRequests WHERE dog_id=(SELECT dog_id FROM Dogs WHERE name='Max')),(SELECT user_id FROM Users WHERE username='alice123'),'2025-06-01 12:00:00','accepted'),
         ((SELECT request_id FROM WalkRequests WHERE dog_id=(SELECT dog_id FROM Dogs WHERE name='Bella')),(SELECT user_id FROM Users WHERE username='carol123'),'2025-06-02 14:00:00','accepted')
