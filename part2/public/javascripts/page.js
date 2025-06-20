@@ -187,7 +187,7 @@ function login(){
         body: JSON.stringify(user)
     })
     .then(res => {
-        if (!res.ok )
+        if (!res.ok) throw new Error('login failed');
     })
     // Create AJAX Request
     var xmlhttp = new XMLHttpRequest();
