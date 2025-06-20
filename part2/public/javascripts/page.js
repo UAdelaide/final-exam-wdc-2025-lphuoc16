@@ -187,6 +187,7 @@ function login(){
     // Define function to run on response
     xmlhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
+            const 
             if (user.role === 'owner') window.location.href = 'owner-dashboard.html';
             else if (user.role === 'walker') window.location.href = 'walker-dashboard.html';
             alert("Welcome "+this.responseText);
