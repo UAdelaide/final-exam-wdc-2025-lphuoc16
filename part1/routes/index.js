@@ -47,7 +47,8 @@ router.get('/api/walkrequests/open', async (req, res) => {
 router.get('/api/walkers/summary', async (req, res) => {
   try {
     const [rows] = await db.query(`
-      `)
+      SELECT
+    `);
   } catch (err) {
     res.status(500).json({ error: 'Internal server error' });
   }
