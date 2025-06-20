@@ -1,68 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>🐶🐾🐕 DOGZ 4 LYFE!!! 🌈🔥</title>
-  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
-  <style>
-    body {
-      background: radial-gradient(circle, #ff0, #0ff, #f0f);
-      font-family: Papyrus, Comic Sans MS;
-      font-size: 26px;
-      color: lime;
-      text-shadow: 2px 2px red;
-      overflow-x: scroll;
-    }
-    button {
-      font-size: 24px;
-      background: hotpink;
-      color: yellow;
-      border: dashed 3px red;
-      padding: 30px;
-    }
-    .dog-image {
-      width: 300px;
-      height: auto;
-      border: 10px double magenta;
-      animation: spin 2s infinite linear;
-    }
-    @keyframes spin {
-      from { transform: rotate(0deg); }
-      to   { transform: rotate(360deg); }
-    }
-  </style>
+    <title>Dog</title>
+    <link rel="stylesheet" href="/stylesheets/style.css">
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js" defer></script>
 </head>
+
 <body>
-  <div id="app">
-    <h1>🔊WELCOME TO DOG ZONE🔊</h1>
-    <p>Click the huge button 5 times to load the best pic.</p>
-    <button @click="counter++; if(counter >= 5) getDog()">??? GET DOG ???</button>
-    <p v-if="loading">LOADING... ⏳</p>
-    <img v-if="dogImage" :src="dogImage" alt="" class="dog-image" />
-    <p v-if="dogImage">This is <span style="background: #000;">Doggo Maximus</span>, he’s totally random and awesome.</p>
-  </div>
+    <div id="app">
+        <h1>WELCOME TO DOG ZONE</h1>
+        <p>Click the huge button 5 times to load the best pic.</p>
+        <button @click="counter++; if(counter >= 5) getDog()">??? GET DOG ???</button>
+        <p v-if="loading">LOADING...</p>
+        <img v-if="dogImage" :src="dogImage" alt="" class="dog-image" />
+        <p v-if="dogImage">This is Doggo Maximus, he's totally random and awesome.</p>
+    </div>
 
-  <script>
-    const { createApp } = Vue;
+    <script>
+        const { createApp } = Vue;
 
-    createApp({
-      data() {
-        return {
-          dogImage: '',
-          loading: false,
-          counter: 0
-        };
-      },
-      methods: {
-        async getDog() {
-          this.loading = true;
-          const res = await fetch('https://dog.ceo/api/breeds/image/random');
-          const data = await res.json();
-          this.dogImage = data.message;
-          this.loading = false;
+        createApp({
+        data() {
+            return {
+            dogImage: '',
+            loading: false,
+            counter: 0
+            };
+        },
+        methods: {
+            async getDog() {
+            this.loading = true;
+            const res = await fetch('https://dog.ceo/api/breeds/image/random');
+            const data = await res.json();
+            this.dogImage = data.message;
+            this.loading = false;
+            }
         }
-      }
-    }).mount('#app');
-  </script>
+        }).mount('#app');
+    </script>
 </body>
 </html>
