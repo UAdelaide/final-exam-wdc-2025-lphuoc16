@@ -47,7 +47,7 @@ const db = mysql.createPool({
     `);
 
     await db.execute(`
-        INSERT IGNORE INTO WalkRatings (request_id, walker_id, owner_id, rating, comments, rated_at)
+        REPLACE INTO WalkRatings (request_id, walker_id, owner_id, rating, comments, rated_at)
         VALUES
         (1, 2, 1, 5, 'Great walk!', '2025-06-12 09:00:00'),
         (2, 2, 1, 4, 'On time', '2025-06-12 09:05:00')
