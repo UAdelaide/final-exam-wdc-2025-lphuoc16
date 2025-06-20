@@ -46,11 +46,11 @@ let db;
     await db.execute(`
         INSERT IGNORE INTO Users (username, email, password_hash, role)
         VALUES
-        ('alice123',   'alice@example.com', 'hashed123', 'owner'),
+        ('alice123',   'alice@example.com',     'hashed123', 'owner'),
         ('bobwalker',  'bobwalker@example.com', 'hashed456', 'walker'),
-        ('carol123',   'carol@example.com', 'hashed789', 'owner'),
-        ('daveowner',  'dave@example.com',  'hashed101', 'owner'),
-        ('evawalker',  'eva@example.com',   'hashed202', 'walker')
+        ('carol123',   'carol@example.com',     'hashed789', 'owner'),
+        ('peterowner',  'dave@example.com',      'hashed101', 'owner'),
+        ('evawalker',  'eva@example.com',       'hashed202', 'walker')
     `);
     // Insert data if table is empty
     const [rows] = await db.execute('SELECT COUNT(*) AS count FROM books');
