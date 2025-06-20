@@ -28,6 +28,8 @@ router.get('/api/walkrequests/open', async (req, res) => {
     const [row] = await db.query(`
 
     `)
+  } catch (err) {
+    res.status(500).json()
   }
 });
 
