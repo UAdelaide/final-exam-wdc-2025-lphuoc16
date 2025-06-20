@@ -53,6 +53,9 @@
             const res = await fetch('/api/users/me', { credentials: 'include' });
             if (!res.ok) throw new Error('Failed to load walk requests');
             user.value = await res.json();
+            console.log('Current user object:', user.value);
+    // <-- And this to see just the ID
+    console.log('Current user_id:', user.value.user_id);
           } catch (err) {
             error.value = err.message;
           }
