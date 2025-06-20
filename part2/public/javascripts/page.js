@@ -193,8 +193,8 @@ function login(){
     .then(data => {
         const role = data.user.role;
         if (role === 'owner') {
-            
-        }
+            window.location.href = 'owner-dashboard.html';
+        } else {}
     })
     // Create AJAX Request
     var xmlhttp = new XMLHttpRequest();
