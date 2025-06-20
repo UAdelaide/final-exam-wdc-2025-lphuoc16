@@ -10,7 +10,7 @@ router.get('/', function(req, res, next) {
 router.get('/api/dogs', async (req, res) => {
   try {
     const [rows] = await db.query(`
-      SELECT UNIQ
+      SELECT
         d.name AS dog_name,
         d.size AS dog_size,
         u.username AS owner_name
@@ -27,7 +27,7 @@ router.get('/api/walkrequests/open', async (req, res) => {
   try {
     const [row] = await db.query(`
       SELECT
-
+      
     `)
   } catch (err) {
     res.status(500).json({ error: 'Internal server error' });
