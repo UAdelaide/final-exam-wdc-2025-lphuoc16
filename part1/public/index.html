@@ -1,40 +1,74 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Dog</title>
-    <link rel="stylesheet" href="/stylesheets/style.css">
-    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  <meta charset="UTF-8" />
+  <title>Dog of the Day</title>
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js" defer></script>
 </head>
 <body>
-    <div id="app">
-        <h1>WELCOME TO DOG API</h1>
-        <p>Click the huge button 5 times to load the picture.</p>
-        <button type="button" @click="counter++; if(counter >= 5) getDog()">??? GET DOG ???</button>
-        <p v-if="loading">Loading....</p>
-        <img v-if="dogImage" :src="dogImage" alt=""/>
-        <p v-if="dogImage">Congratulations! Here is the very cute dog.</p>
+  <div id="app">
+    <h1>Dog of the Day</h1>
+
+    <button v-if="!codeRevealed" @click="handleClick">Click Me ({{ counter }}/5)</button>
+
+    <div v-if="codeRevealed && !unlocked">
+      <p>Please enter this code to unlock your dog: <strong>{{ code }}</strong></p>
+      <input type="text" v-model="userInput" placeholder="Enter code..." />
+      <button @click="checkCode">Submit</button>
     </div>
 
-    <script>
-        const { createApp } = Vue;
-        createApp({
-            data() {
-                return {
-                    dogImage: '',
-                    loading: false,
-                    counter: 0
-                };
-            },
-            methods: {
-                async getDog() {
-                    this.loading = true;
-                    const res = await fetch('https://dog.ceo/api/breeds/image/random');
-                    const data = await res.json();
-                    this.dogImage = data.message;
-                    this.loading = false;
-                }
-            }
-        }).mount('#app');
-    </script>
+    <div v-if="unlocked">
+      <p>Here's your dog 🐶</p>
+      <img :src="dogImage" alt="Dog image" style="max-width: 300px;" />
+    </div>
+
+    <p v-if="loading">Loading...</p>
+  </div>
+
+  <script>
+    const { createApp } = Vue;
+
+    createApp({
+      data() {
+        return {
+          counter: 0,
+          code: '1234',
+          codeRevealed: false,
+          userInput: '',
+          unlocked: false,
+          dogImage: '',
+          loading: false
+        };
+      },
+      methods: {
+        handleClick() {
+          this.counter++;
+          if (this.counter >= 5) {
+            this.codeRevealed = true;
+          }
+        },
+        checkCode() {
+          if (this.userInput === this.code) {
+            this.fetchDog();
+            this.unlocked = true;
+          } else {
+            alert("Incorrect code. Try again.");
+          }
+        },
+        async fetchDog() {
+          this.loading = true;
+          try {
+            const res = await fetch('https://dog.ceo/api/breeds/image/random');
+            const data = await res.json();
+            this.dogImage = data.message;
+          } catch (e) {
+            alert("Failed to fetch dog image.");
+          } finally {
+            this.loading = false;
+          }
+        }
+      }
+    }).mount('#app');
+  </script>
 </body>
 </html>
