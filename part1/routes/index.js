@@ -38,6 +38,7 @@ router.get('/api/walkrequests/open', async (req, res) => {
       JOIN Users u ON d.owner_id = u.user_id
       WHERE r.status = 'open'
     `);
+    res.json(rows);
   } catch (err) {
     res.status(500).json({ error: 'Internal server error' });
   }
@@ -45,7 +46,9 @@ router.get('/api/walkrequests/open', async (req, res) => {
 
 router.get('/api/walkers/summary', async (req, res) => {
   try {
-
+    const
+  } catch (err) {
+    res.status(500).json({ error: 'Internal server error' });
   }
 });
 
