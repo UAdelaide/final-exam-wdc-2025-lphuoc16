@@ -256,6 +256,7 @@ async function loadDogTable() {
         await Promise.all(dogs.map(async dog => {
             const data = await fetch('https://dog.ceo/api/breeds/image/random')
             .then((res) => res.json());
+            dog.photoUrl = data.message;
         }))
     }
 }
