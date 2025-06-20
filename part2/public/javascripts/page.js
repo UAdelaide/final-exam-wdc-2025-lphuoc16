@@ -182,7 +182,8 @@ function login(){
     };
 
     fetch('/user/login', {
-        
+        method: 'POST',
+        headers: 
     })
     // Create AJAX Request
     var xmlhttp = new XMLHttpRequest();
