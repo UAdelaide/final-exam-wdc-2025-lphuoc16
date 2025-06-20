@@ -57,9 +57,9 @@ let db;
         VALUES
         ((SELECT user_id FROM Users WHERE username='alice123'),'Max','medium'),
         ((SELECT user_id FROM Users WHERE username='carol123'),'Bella','small'),
-        ((SELECT user_id FROM Users WHERE username='daveowner'),'Charlie','large'),
+        ((SELECT user_id FROM Users WHERE username='peterowner'),'peter','large'),
         ((SELECT user_id FROM Users WHERE username='alice123'),'Daisy','medium'),
-        ((SELECT user_id FROM Users WHERE username='daveowner'),'Buddy','small')
+        ((SELECT user_id FROM Users WHERE username='peterowner'),'Buddy','small')
     `);
 
   } catch (err) {
