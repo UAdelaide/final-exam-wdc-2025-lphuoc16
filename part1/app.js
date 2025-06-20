@@ -44,7 +44,7 @@ let db;
 
     // Insert data if table is empty
     await db.execute(`
-        INSERT IGNORE INTO Users (username, email, password_hash, role)
+        INSERT INTO Users (username, email, password_hash, role)
         VALUES
         ('alice123',   'alice@example.com',     'hashed123', 'owner'),
         ('bobwalker',  'bobwalker@example.com', 'hashed456', 'walker'),
@@ -52,9 +52,7 @@ let db;
         ('peterowner', 'peter@example.com',     'hashed100', 'owner'),
         ('phuocwalker','phuoc@example.com',     'hashed200', 'walker')
     `);
-    const [rows] = await db.execute('SELECT COUNT(*) AS count FROM books');
-    if (rows[0].count === 0) {
-      await db.execute(`
+    await db.execute(`
         INSERT INTO books (title, author) VALUES
         ('1984', 'George Orwell'),
         ('To Kill a Mockingbird', 'Harper Lee'),
