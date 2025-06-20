@@ -8,10 +8,10 @@
 
 <body>
     <div id="app">
-        <h1>🔊WELCOME TO DOG ZONE🔊</h1>
+        <h1>WELCOME TO DOG ZONE</h1>
         <p>Click the huge button 5 times to load the best pic.</p>
         <button @click="counter++; if(counter >= 5) getDog()">??? GET DOG ???</button>
-        <p v-if="loading">LOADING... ⏳</p>
+        <p v-if="loading">LOADING...</p>
         <img v-if="dogImage" :src="dogImage" alt="" class="dog-image" />
         <p v-if="dogImage">This is <span style="background: #000;">Doggo Maximus</span>, he’s totally random and awesome.</p>
     </div>
