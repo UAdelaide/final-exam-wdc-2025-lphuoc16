@@ -29,7 +29,8 @@ router.get('/api/walkrequests/open', async (req, res) => {
       SELECT
       d.name AS dog_name,
       r.requested_time AS req_time,
-      
+      r.location AS location,
+      u.
     `)
   } catch (err) {
     res.status(500).json({ error: 'Internal server error' });
