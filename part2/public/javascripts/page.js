@@ -249,7 +249,7 @@ function logout(){
     });
 }
 
-async function loadDogTable() {
+async function loadDogsTable() {
     try {
         const dogs = await fetch('/api/users/dogs')
         .then((res) => res.json());
