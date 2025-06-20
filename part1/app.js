@@ -49,8 +49,8 @@ let db;
         ('alice123',   'alice@example.com',     'hashed123', 'owner'),
         ('bobwalker',  'bobwalker@example.com', 'hashed456', 'walker'),
         ('carol123',   'carol@example.com',     'hashed789', 'owner'),
-        ('peterowner',  'dave@example.com',      'hashed101', 'owner'),
-        ('evawalker',  'eva@example.com',       'hashed202', 'walker')
+        ('peterowner',  'peter@example.com',    'hashed100', 'owner'),
+        ('phuocwalker',  'phuoc@example.com',       'hashed200', 'walker')
     `);
     // Insert data if table is empty
     const [rows] = await db.execute('SELECT COUNT(*) AS count FROM books');
