@@ -12,7 +12,7 @@ const db = mysql.createPool({
   try {
     // Insert data if table is empty
     await db.execute(`
-        REPLACE INTO Users (username, email, password_hash, role)
+        INSERT IGNORE INTO Users (username, email, password_hash, role)
         VALUES
         ('alice123', 'alice@example.com', 'hashed123', 'owner'),
         ('bobwalker', 'bobwalker@example.com', 'hashed456', 'walker'),
@@ -21,7 +21,7 @@ const db = mysql.createPool({
         ('phuocwalker', 'phuoc@example.com', 'hashed200', 'walker')
     `);
     await db.execute(`
-        REPLACE INTO Dogs (owner_id, name, size)
+        INSERT IGNORE INTO Dogs (owner_id, name, size)
         VALUES
         ((SELECT user_id FROM Users WHERE username='alice123'),'Max','medium'),
         ((SELECT user_id FROM Users WHERE username='carol123'),'Bella','small'),
@@ -30,7 +30,7 @@ const db = mysql.createPool({
         ((SELECT user_id FROM Users WHERE username='peterowner'),'Phuoc','small')
     `);
     await db.execute(`
-        REPLACE INTO WalkRequests (dog_id, requested_time, duration_minutes, location, status)
+        INSERT IGNORE INTO WalkRequests (dog_id, requested_time, duration_minutes, location, status)
         VALUES
         ((SELECT dog_id FROM Dogs WHERE name='Max'), '2025-06-10 08:00:00', 30, 'Parklands', 'open'),
         ((SELECT dog_id FROM Dogs WHERE name='Bella'), '2025-06-10 09:30:00', 45, 'Beachside Ave', 'accepted'),
@@ -39,7 +39,7 @@ const db = mysql.createPool({
         ((SELECT dog_id FROM Dogs WHERE name='Phuoc'), '2025-06-12 08:30:00', 15, 'Lakeside Loop', 'cancelled')
     `);
     await db.execute(`
-        REPLACE INTO WalkApplications (request_id, walker_id, applied_at, status)
+        INSERT IGNORE INTO WalkApplications (request_id, walker_id, applied_at, status)
         VALUES
         (1, 2, '2025-06-01 12:00:00', 'accepted'),
         (3, 5, '2025-06-02 14:00:00', 'accepted'),
@@ -47,7 +47,7 @@ const db = mysql.createPool({
     `);
 
     await db.execute(`
-        REPLACE INTO WalkRatings (request_id, walker_id, owner_id, rating, comments, rated_at)
+        INSERT IGNORE INTO WalkRatings (request_id, walker_id, owner_id, rating, comments, rated_at)
         VALUES
         (1, 2, 1, 5, 'Great walk!', '2025-06-12 09:00:00'),
         (2, 2, 1, 4, 'On time', '2025-06-12 09:05:00')
