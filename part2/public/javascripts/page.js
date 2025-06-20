@@ -187,10 +187,12 @@ function login(){
         body: JSON.stringify(user)
     })
     .then((res) => {
+        console.log('Response status:', res.status);
         if (!res.ok) throw new Error('login failed');
         return res.json();
     })
     .then((data) => {
+        console.log('Login success:', data);
         const role = data.user.role;
         if (role === 'owner') {
             window.location.href = 'owner-dashboard.html';
