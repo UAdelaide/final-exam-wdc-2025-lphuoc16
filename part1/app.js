@@ -42,7 +42,7 @@ let db;
       database: 'dogwalks.sql'
     });
 
-    // Create a table if it doesn't exist
+    // Insert data if table is empty
     await db.execute(`
         INSERT IGNORE INTO Users (username, email, password_hash, role)
         VALUES
@@ -52,7 +52,6 @@ let db;
         ('peterowner', 'peter@example.com',     'hashed100', 'owner'),
         ('phuocwalker','phuoc@example.com',     'hashed200', 'walker')
     `);
-    // Insert data if table is empty
     const [rows] = await db.execute('SELECT COUNT(*) AS count FROM books');
     if (rows[0].count === 0) {
       await db.execute(`
