@@ -248,3 +248,7 @@ function logout(){
         alert('Unable to log out. Please try again.');
     });
 }
+
+async function loadDogTable() {
+    tr
+}
