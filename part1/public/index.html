@@ -13,7 +13,7 @@
         <button @click="counter++; if(counter >= 5) getDog()">??? GET DOG ???</button>
         <p v-if="loading">LOADING...</p>
         <img v-if="dogImage" :src="dogImage" alt="" class="dog-image" />
-        <p v-if="dogImage">This is <span style="background: #000;">Doggo Maximus</span>, he’s totally random and awesome.</p>
+        <p v-if="dogImage">This is <span style="background: #000;">Doggo Maximus</span>, he's totally random and awesome.</p>
     </div>
 
     <script>
