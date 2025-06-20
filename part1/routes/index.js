@@ -25,7 +25,7 @@ router.get('/api/dogs', async (req, res) => {
 
 router.get('/api/walkrequests/open', async (req, res) => {
   try {
-    const [row] = await db.query(`
+    const [rows] = await db.query(`
       SELECT
         r.request_id,
         d.name AS dog_name,
@@ -46,7 +46,8 @@ router.get('/api/walkrequests/open', async (req, res) => {
 
 router.get('/api/walkers/summary', async (req, res) => {
   try {
-    const
+    const [rows] = await db.query(`
+      `)
   } catch (err) {
     res.status(500).json({ error: 'Internal server error' });
   }
