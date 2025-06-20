@@ -195,7 +195,9 @@ function login(){
         if (role === 'owner') {
             window.location.href = 'owner-dashboard.html';
         } else if (role === 'walker') {
-            window.location.href = 'walker-dashboard.html'
+            window.location.href = 'walker-dashboard.html';
+        } else {
+            alert('unknown role');
         }
     })
     // Create AJAX Request
