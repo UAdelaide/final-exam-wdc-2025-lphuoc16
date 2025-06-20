@@ -194,7 +194,9 @@ function login(){
         const role = data.user.role;
         if (role === 'owner') {
             window.location.href = 'owner-dashboard.html';
-        } else {}
+        } else if (role === 'walker') {
+            window.location.href = 'walker-dashboard.html'
+        }
     })
     // Create AJAX Request
     var xmlhttp = new XMLHttpRequest();
