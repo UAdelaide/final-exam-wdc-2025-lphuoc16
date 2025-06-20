@@ -249,7 +249,7 @@ function logout(){
     });
 }
 
-async function loadDogsTable() {
+async function loadDogTable() {
     try {
         const dogs = await fetch('/api/users/dogs')
         .then((res) => res.json());
@@ -270,7 +270,4 @@ async function loadDogsTable() {
     } catch (err) {
         console.error('Failed to load dogs table: ', err);
     }
-    window.addEventListener('DOMContentLoaded', () => {
-    loadDogsTable();
-    });
 }
