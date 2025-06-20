@@ -52,6 +52,8 @@ router.get('/api/walkers/summary', async (req, res) => {
         COUNT(r.rating_id) AS total_ratings,
         AVG(r.rating_id) AS average_rating,
         SUM(wr.status = 'completed') AS completed_walks
+      FROM Users u
+      JOIN
     `);
   } catch (err) {
     res.status(500).json({ error: 'Internal server error' });
