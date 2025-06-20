@@ -237,8 +237,9 @@ function logout(){
     document.getElementById('logoutBtn').addEventListener('click', async() => {
         await fetch('/api/users/logout', {
             method: 'POST',
-            headers
-        })
+            credentials: 'include'
+        });
+        window.href
     })
 
 }
