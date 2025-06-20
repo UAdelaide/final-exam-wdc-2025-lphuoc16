@@ -78,7 +78,7 @@ router.get('/mydogs', async (req, res) => {
     );
     res.json(rows);
   } catch (err) {
-    res.status(500)
+    res.status(500).json({ error: 'Failed to load your dogs' });
   }
 });
 
