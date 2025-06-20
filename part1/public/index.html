@@ -7,36 +7,36 @@
 </head>
 
 <body>
-<div id="app">
-    <h1>🔊WELCOME TO DOG ZONE🔊</h1>
-    <p>Click the huge button 5 times to load the best pic.</p>
-    <button @click="counter++; if(counter >= 5) getDog()">??? GET DOG ???</button>
-    <p v-if="loading">LOADING... ⏳</p>
-    <img v-if="dogImage" :src="dogImage" alt="" class="dog-image" />
-    <p v-if="dogImage">This is <span style="background: #000;">Doggo Maximus</span>, he’s totally random and awesome.</p>
-</div>
+    <div id="app">
+        <h1>🔊WELCOME TO DOG ZONE🔊</h1>
+        <p>Click the huge button 5 times to load the best pic.</p>
+        <button @click="counter++; if(counter >= 5) getDog()">??? GET DOG ???</button>
+        <p v-if="loading">LOADING... ⏳</p>
+        <img v-if="dogImage" :src="dogImage" alt="" class="dog-image" />
+        <p v-if="dogImage">This is <span style="background: #000;">Doggo Maximus</span>, he’s totally random and awesome.</p>
+    </div>
 
-<script>
-    const { createApp } = Vue;
+    <script>
+        const { createApp } = Vue;
 
-    createApp({
-    data() {
-        return {
-        dogImage: '',
-        loading: false,
-        counter: 0
-        };
-    },
-    methods: {
-        async getDog() {
-        this.loading = true;
-        const res = await fetch('https://dog.ceo/api/breeds/image/random');
-        const data = await res.json();
-        this.dogImage = data.message;
-        this.loading = false;
+        createApp({
+        data() {
+            return {
+            dogImage: '',
+            loading: false,
+            counter: 0
+            };
+        },
+        methods: {
+            async getDog() {
+            this.loading = true;
+            const res = await fetch('https://dog.ceo/api/breeds/image/random');
+            const data = await res.json();
+            this.dogImage = data.message;
+            this.loading = false;
+            }
         }
-    }
-    }).mount('#app');
-</script>
+        }).mount('#app');
+    </script>
 </body>
 </html>
