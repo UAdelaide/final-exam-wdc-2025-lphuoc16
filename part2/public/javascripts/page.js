@@ -200,6 +200,9 @@ function login(){
             alert('unknown role');
         }
     })
+    .catch((err) => {
+        alert(err.message);
+    })
     // Create AJAX Request
     var xmlhttp = new XMLHttpRequest();
 
