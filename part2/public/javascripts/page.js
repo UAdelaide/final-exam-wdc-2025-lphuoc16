@@ -265,7 +265,7 @@ async function loadDogsTable() {
             <td>${d.dog_name}</td>
             <td>${d.dog_size}</td>
             <td>${d.owner_name}</td>
-            <td><img src="${d.photoUrl}" width="300" height="300"/></td>
+            <td><img src="${d.photoUrl}" width="150"/></td>
         </tr>
         `).join('');
     } catch (err) {
