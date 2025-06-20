@@ -261,10 +261,11 @@ async function loadDogsTable() {
         const tbody = document.querySelector('#dogsTable tbody');
         tbody.innerHTML = dogs.map((d) => `
         <tr>
-            <td><img src="${d.photoUrl}" width="80" /></td>
+            <td></td>
             <td>${d.dog_name}</td>
             <td>${d.dog_size}</td>
             <td>${d.owner_name}</td>
+            <td><img src="${d.photoUrl}" width="80" /></td>
         </tr>
         `).join('');
     } catch (err) {
