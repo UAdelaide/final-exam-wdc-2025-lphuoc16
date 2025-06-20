@@ -54,7 +54,7 @@
             if (!res.ok) throw new Error('Failed to load walk requests');
             user.value = await res.json();
           } catch (err) {
-            error.value = 
+            error.value = err.message;
           }
         }
 
@@ -73,7 +73,7 @@
             const res = await fetch(`/api/walks/${requestId}/apply`, {
               method: 'POST',
               headers: { 'Content-Type': 'application/json' },
-              body: JSON.stringify({ walker_id: user })
+              body: JSON.stringify({ walker_id: getCurrentUser() })
             });
             const result = await res.json();
 
