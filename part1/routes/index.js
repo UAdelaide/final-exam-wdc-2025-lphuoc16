@@ -8,7 +8,6 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/api/dogs', async (req, res) => {
-  try {
     const [rows] = await db.query(`
       SELECT
         d.name AS dog_name,
