@@ -45,7 +45,6 @@ const db = mysql.createPool({
         (2, 5, '2025-06-02 14:00:00', 'accepted')
     `);
 
-    // Insert WalkRatings using hardcoded IDs
     await db.execute(`
         INSERT IGNORE INTO WalkRatings (request_id, walker_id, owner_id, rating, comments, rated_at)
         VALUES
