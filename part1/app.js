@@ -71,8 +71,11 @@ let db;
         ((SELECT dog_id FROM Dogs WHERE name='Phuoc'), '2025-06-12 08:30:00', 15, 'Lakeside Loop', 'cancelled')
     `);
     await db.execute(`
-        
-    `);
+    INSERT IGNORE INTO WalkApplications (request_id, walker_id, applied_at, status)
+    VALUES
+      ((SELECT request_id FROM WalkRequests WHERE dog_id=(SELECT dog_id FROM Dogs WHERE name='Max')),(SELECT user_id FROM Users WHERE username='bobwalker'),'2025-06-01 12:00:00','accepted'),
+      ((SELECT request_id FROM WalkRequests WHERE dog_id=(SELECT dog_id FROM Dogs WHERE name='Bella')),(SELECT user_id FROM Users WHERE username='evawalker'),'2025-06-02 14:00:00','accepted')
+  `);
 
   } catch (err) {
     console.error('Error setting up database. Ensure Mysql is running: service mysql start', err);
