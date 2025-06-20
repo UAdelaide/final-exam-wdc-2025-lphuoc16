@@ -251,6 +251,7 @@ function logout(){
 
 async function loadDogTable() {
     try {
-        const dogs = await fetch ('/api/users/dogs').then
+        const dogs = await fetch ('/api/users/dogs')
+        .then
     }
 }

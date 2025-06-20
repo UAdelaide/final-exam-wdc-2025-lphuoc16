@@ -82,7 +82,7 @@ router.get('/mydogs', async (req, res) => {
   }
 });
 
-router.get('/api/dogs', async (req, res) => {
+router.get('/dogs', async (req, res) => {
   try {
     const [rows] = await db.query(`
       SELECT
