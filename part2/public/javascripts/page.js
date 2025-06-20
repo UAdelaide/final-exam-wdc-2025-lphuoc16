@@ -190,7 +190,7 @@ function login(){
         if (!res.ok) throw new Error('login failed');
         return res.json();
     })
-    .then(data => {
+    .then((data) => {
         const role = data.user.role;
         if (role === 'owner') {
             window.location.href = 'owner-dashboard.html';
@@ -202,7 +202,8 @@ function login(){
     })
     .catch((err) => {
         alert(err.message);
-    })
+    });
+    //
     // Create AJAX Request
     var xmlhttp = new XMLHttpRequest();
 
