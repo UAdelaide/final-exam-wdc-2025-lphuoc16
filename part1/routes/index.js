@@ -14,6 +14,7 @@ router.get('/api/dogs', async (req, res) => {
       d.size AS dog_size,
       u.username AS owner_name
     FROM Dogs AS d
+    JOIN Users as u ON d.owner_id = 
   `)
 });
 module.exports = router;
