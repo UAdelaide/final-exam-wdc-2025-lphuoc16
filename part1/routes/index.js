@@ -32,7 +32,7 @@ router.get('/api/walkrequests/open', async (req, res) => {
         r.location AS location,
         u.username AS owner_name
       FROM WalkRequests r
-      JOIN
+      JOIN Dogs d ON 
     `);
   } catch (err) {
     res.status(500).json({ error: 'Internal server error' });
