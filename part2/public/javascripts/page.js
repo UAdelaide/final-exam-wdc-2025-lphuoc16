@@ -253,5 +253,8 @@ async function loadDogTable() {
     try {
         const dogs = await fetch ('/api/users/dogs')
         .then((res) => res.json());
+        await Promise.all(dogs.map(async dog => {
+            
+        }))
     }
 }
