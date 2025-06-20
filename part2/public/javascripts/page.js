@@ -187,7 +187,7 @@ function login(){
         body: JSON.stringify(user)
     })
     .then((res) => {
-        console.log('Response:', res.status, data);
+        console.log('Response:', res.status);
         if (!res.ok) throw new Error('login failed');
         return res.json();
     })
