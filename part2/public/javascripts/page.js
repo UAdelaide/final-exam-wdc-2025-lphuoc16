@@ -235,7 +235,10 @@ function logout(){
     // xmlhttp.send();
 
     document.getElementById('logoutBtn').addEventListener('click', async() => {
-        await fetch()
+        await fetch('/api/users/logout', {
+            method: 'POST',
+            headers
+        })
     })
 
 }
