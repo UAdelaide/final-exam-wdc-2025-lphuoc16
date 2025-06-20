@@ -89,12 +89,12 @@
         const dogs = ref([]);
 
         async function loadDogs() {
-+          if (!user.value) await loadUser();
-+          const res    = await fetch('/api/dogs', { credentials: 'include' });
-+          const all    = await res.json();
-+          // filter by owner_id
-+          dogs.value    = all.filter(d => d.owner_id === user.value.user_id);
-+        }
+          if (!user.value) await loadUser();
+          const res    = await fetch('/api/dogs', { credentials: 'include' });
+          const all    = await res.json();
+          // filter by owner_id
+          dogs.value    = all.filter(d => d.owner_id === user.value.user_id);
+        }
 
         async function loadWalks() {
           try {
