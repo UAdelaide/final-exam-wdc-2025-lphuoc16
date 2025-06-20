@@ -234,11 +234,17 @@ function logout(){
     // xmlhttp.open("POST", "/users/logout", true);
     // xmlhttp.send();
 
-    document.getElementById('logoutBtn').addEventListener('click', async() => {
-        await fetch('/api/users/logout', {
-            method: 'POST',
-            credentials: 'include'
-        });
+    fetch('/api/users/logout', {
+        method: 'POST',
+        credentials: 'include'   // send the session cookie so the server can destroy it
+    })
+    .then((res) => {
+        if (!res.ok) throw new Error('Logout failed');
+        // on success, redirect to login page
         window.location.href = 'index.html';
+    })
+    .catch(err => {
+        console.error('Logout error:', err);
+        alert('Unable to log out. Please try again.');
     });
 }
