@@ -57,19 +57,19 @@ let db;
         VALUES
         ((SELECT user_id FROM Users WHERE username='alice123'),'Max','medium'),
         ((SELECT user_id FROM Users WHERE username='carol123'),'Bella','small'),
-        ((SELECT user_id FROM Users WHERE username='peterowner'),'peter','large'),
+        ((SELECT user_id FROM Users WHERE username='peterowner'),'Peter','large'),
         ((SELECT user_id FROM Users WHERE username='alice123'),'Daisy','medium'),
         ((SELECT user_id FROM Users WHERE username='peterowner'),'Phuoc','small')
     `);
     await db.execute(`
-    INSERT IGNORE INTO WalkRequests (dog_id, requested_time, duration_minutes, location, status)
-    VALUES
-      ((SELECT dog_id FROM Dogs WHERE name='Max'),   '2025-06-10 08:00:00', 30, 'Parklands',      'open'),
-      ((SELECT dog_id FROM Dogs WHERE name='Bella'), '2025-06-10 09:30:00', 45, 'Beachside Ave',  'accepted'),
-      ((SELECT dog_id FROM Dogs WHERE name='Charlie'),'2025-06-11 10:00:00', 20, 'Central Park',   'open'),
-      ((SELECT dog_id FROM Dogs WHERE name='Daisy'), '2025-06-11 11:00:00', 60, 'Northside Trail','completed'),
-      ((SELECT dog_id FROM Dogs WHERE name='Buddy'), '2025-06-12 08:30:00', 15, 'Lakeside Loop',  'cancelled')
-  `);
+        INSERT IGNORE INTO WalkRequests (dog_id, requested_time, duration_minutes, location, status)
+        VALUES
+        ((SELECT dog_id FROM Dogs WHERE name='Max'),   '2025-06-10 08:00:00', 30, 'Parklands',      'open'),
+        ((SELECT dog_id FROM Dogs WHERE name='Bella'), '2025-06-10 09:30:00', 45, 'Beachside Ave',  'accepted'),
+        ((SELECT dog_id FROM Dogs WHERE name=''2025-06-11 10:00:00', 20, 'Central Park',   'open'),
+        ((SELECT dog_id FROM Dogs WHERE name='Daisy'), '2025-06-11 11:00:00', 60, 'Northside Trail','completed'),
+        ((SELECT dog_id FROM Dogs WHERE name='Buddy'), '2025-06-12 08:30:00', 15, 'Lakeside Loop',  'cancelled')
+    `);
 
   } catch (err) {
     console.error('Error setting up database. Ensure Mysql is running: service mysql start', err);
