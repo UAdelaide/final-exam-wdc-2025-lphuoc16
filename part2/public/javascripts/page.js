@@ -191,7 +191,10 @@ function login(){
         return res.json();
     })
     .then(data => {
-        
+        const role = data.user.role;
+        if (role === 'owner') {
+            
+        }
     })
     // Create AJAX Request
     var xmlhttp = new XMLHttpRequest();
