@@ -270,4 +270,7 @@ async function loadDogTable() {
     } catch (err) {
         console.error('Failed to load dogs table: ', err);
     }
+    window.addEventListener('DOMContentLoaded', () => {
+    loadDogsTable();
+    });
 }
