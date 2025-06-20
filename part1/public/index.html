@@ -41,31 +41,31 @@
                 };
             },
             methods: {
-                handleClick() {
-                    this.counter++;
-                    if (this.counter >= 5) {
-                        this.codeRevealed = true;
-                    }
-                },
-                checkCode() {
-                    if (this.userInput === this.code) {
-                        this.fetchDog();
-                        this.unlocked = true;
-                    } else {
-                        alert("Incorrect code. Try again.");
-                    }
-                },
-                async fetchDog() {
-                    this.loading = true;
-                    try {
-                        const res = await fetch('https://dog.ceo/api/breeds/image/random');
-                        const data = await res.json();
-                        this.dogImage = data.message;
-                    } catch (err) {
-                        alert("Failed to fetch dog image.");
-                    } finally {
-                        this.loading = false;
-                    }
+            handleClick() {
+                this.counter++;
+                if (this.counter >= 5) {
+                    this.codeRevealed = true;
+                }
+            },
+            checkCode() {
+                if (this.userInput === this.code) {
+                    this.fetchDog();
+                    this.unlocked = true;
+                } else {
+                    alert("Incorrect code. Try again.");
+                }
+            },
+            async fetchDog() {
+                this.loading = true;
+                try {
+                    const res = await fetch('https://dog.ceo/api/breeds/image/random');
+                    const data = await res.json();
+                    this.dogImage = data.message;
+                } catch (err) {
+                    alert("Failed to fetch dog image.");
+                } finally {
+                    this.loading = false;
+                }
             }
         }
         }).mount('#app');
