@@ -53,11 +53,14 @@ let db;
         ('phuocwalker','phuoc@example.com',     'hashed200', 'walker')
     `);
     await db.execute(`
-        INSERT INTO books (title, author) VALUES
-        ('1984', 'George Orwell'),
-        ('To Kill a Mockingbird', 'Harper Lee'),
-        ('Brave New World', 'Aldous Huxley')
-      `);
+    INSERT IGNORE INTO Dogs (owner_id, name, size)
+    VALUES
+      ((SELECT user_id FROM Users WHERE username='alice123'),'Max','medium'),
+      ((SELECT user_id FROM Users WHERE username='carol123'),'Bella','small'),
+      ((SELECT user_id FROM Users WHERE username='daveowner'),'Charlie','large'),
+      ((SELECT user_id FROM Users WHERE username='alice123'),'Daisy','medium'),
+      ((SELECT user_id FROM Users WHERE username='daveowner'),'Buddy','small')
+  `);
     }
   } catch (err) {
     console.error('Error setting up database. Ensure Mysql is running: service mysql start', err);
