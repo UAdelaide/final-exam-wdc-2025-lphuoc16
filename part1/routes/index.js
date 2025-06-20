@@ -8,16 +8,18 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/api/dogs', async (req, res) => {
-  const [rows] = await db.query(`
-    SELECT
-      d.name AS dog_name,
-      d.size AS dog_size,
-      u.username AS owner_name
-    FROM Dogs AS d
-    JOIN Users as u ON d.owner_id = u.user_id
-  `);
-  res.json(rows);
-} catch (err) {
-  
+  try {
+    const [rows] = await db.query(`
+      SELECT
+        d.name AS dog_name,
+        d.size AS dog_size,
+        u.username AS owner_name
+      FROM Dogs AS d
+      JOIN Users as u ON d.owner_id = u.user_id
+    `);
+    res.json(rows);
+  } catch (err) {
+    res.status(500).json({ error: 'Internal server error' });
+  }
 });
 module.exports = router;
