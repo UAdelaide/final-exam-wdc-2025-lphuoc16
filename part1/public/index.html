@@ -12,14 +12,15 @@
         <button type="button" v-if="!codeRevealed" @click="handleClick">Click Me ({{ counter }}/5)</button>
 
         <div v-if="codeRevealed && !unlocked">
-        <p>Please enter this code to unlock your dog: <strong>{{ code }}</strong></p>
-        <input type="text" v-model="userInput" placeholder="Enter code..." />
-        <button type="button" @click="checkCode">Submit</button>
+            <p>Please enter this code to unlock your dog: <strong>{{ code }}</strong></p>
+            <input type="text" v-model="userInput" placeholder="Enter code..." />
+            <button type="button" @click="checkCode">Submit</button>
         </div>
 
         <div v-if="unlocked">
-        <p>Tadaaaaa !!</p>
-        <img :src="dogImage" alt="Dog image"/>
+            <p>Tadaaaaa !!</p>
+            <img :src="dogImage" alt="Dog image"/>
+            
         </div>
 
         <p v-if="loading">Loading...</p>
