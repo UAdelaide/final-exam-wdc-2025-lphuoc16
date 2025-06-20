@@ -259,7 +259,7 @@ async function loadDogTable() {
             dog.photoUrl = data.message;
         }))
         const tbody = document.querySelector('#dogsTable tbody');
-        tbody.innerHTML = dogs.map(d => `
+        tbody.innerHTML = dogs.map((d => `
         <tr>
             <td><img src="${d.photoUrl}" width="80" /></td>
             <td>${d.dog_name}</td>
