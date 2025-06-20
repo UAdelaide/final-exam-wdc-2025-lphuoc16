@@ -132,7 +132,8 @@
           }
         }
 
-        onMounted(() => {
+        onMounted(async() => {
+          await loadDogs();
           loadWalks();
         });
 
