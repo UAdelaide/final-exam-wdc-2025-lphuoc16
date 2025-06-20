@@ -8,6 +8,7 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/api/dogs', async (req, res) => {
+  try {
     const [rows] = await db.query(`
       SELECT
         d.name AS dog_name,
@@ -17,6 +18,9 @@ router.get('/api/dogs', async (req, res) => {
       JOIN Users u ON d.owner_id = u.user_id
     `);
     res.json(rows);
+  } catch (err) {
+    res.status(500).json({ error: 'Internal server error' });
+  }
 });
 
 module.exports = router;
