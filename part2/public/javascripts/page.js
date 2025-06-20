@@ -239,7 +239,6 @@ function logout(){
             method: 'POST',
             credentials: 'include'
         });
-        window.href
-    })
-
+        window.location.href = 'index.html';
+    });
 }
