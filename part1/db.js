@@ -44,7 +44,7 @@ const db = mysql.createPool({
         ((SELECT request_id FROM WalkRequests WHERE dog_id=(SELECT dog_id FROM Dogs WHERE name='Max')),(SELECT user_id FROM Users WHERE username='alice123'),'2025-06-01 12:00:00','accepted'),
         ((SELECT request_id FROM WalkRequests WHERE dog_id=(SELECT dog_id FROM Dogs WHERE name='Bella')),(SELECT user_id FROM Users WHERE username='carol123'),'2025-06-02 14:00:00','accepted')
     `);
-    await pool.execute(`
+    await db.execute(`
     INSERT IGNORE INTO WalkRatings (request_id, walker_id, rating, comments, rated_at)
     VALUES
       ((SELECT request_id FROM WalkRequests WHERE dog_id=(SELECT dog_id FROM Dogs WHERE name='Daisy')),(SELECT user_id FROM Users WHERE username='bobwalker'),5,'Great walk!','2025-06-12 09:00:00'),
