@@ -183,7 +183,11 @@ function login(){
 
     fetch('/user/login', {
         method: 'POST',
-        headers: 
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(user)
+    })
+    .then(res => {
+        if (!res.ok )
     })
     // Create AJAX Request
     var xmlhttp = new XMLHttpRequest();
