@@ -250,5 +250,7 @@ function logout(){
 }
 
 async function loadDogTable() {
-    tr
+    try {
+        const dogs = await fetch ('')
+    }
 }
