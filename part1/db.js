@@ -41,8 +41,8 @@ const db = mysql.createPool({
     await db.execute(`
         INSERT IGNORE INTO WalkApplications (request_id, walker_id, applied_at, status)
         VALUES
-        (1, 1, '2025-06-01 12:00:00', 'accepted'), -- alice123 applies to walk Max
-        (2, 3, '2025-06-02 14:00:00', 'accepted')  -- carol123 applies to walk Bella
+        (1, 2, '2025-06-01 12:00:00', 'accepted'), -- alice123 applies to walk Max
+        (2, 5, '2025-06-02 14:00:00', 'accepted')  -- carol123 applies to walk Bella
     `);
 
     // Insert WalkRatings using hardcoded IDs
