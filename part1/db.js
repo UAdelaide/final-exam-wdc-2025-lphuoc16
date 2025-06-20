@@ -1,12 +1,11 @@
-var mysql = require('mysql2/promise');
-let db;
+const mysql = require('mysql2/promise');
 
 const db = mysql.createPool({
-      host: 'localhost',
-      user: 'root',
-      password: 'root',
-      database: 'dogwalks'
-    });
+    host: 'localhost',
+    user: 'root',
+    password: 'root',
+    database: 'dogwalks'
+});
 (async () => {
   try {
 
