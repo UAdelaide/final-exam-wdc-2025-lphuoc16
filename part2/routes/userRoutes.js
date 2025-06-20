@@ -41,7 +41,7 @@ router.post('/login', async (req, res) => {
   console.log('Login attempt:', req.body);
 
   try {
-    //fix the email -> username
+    // fix the email -> username
     const [rows] = await db.query(`
       SELECT user_id, username, role FROM Users
       WHERE username = ? AND password_hash = ?
