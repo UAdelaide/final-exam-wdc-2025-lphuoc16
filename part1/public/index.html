@@ -9,17 +9,17 @@
   <div id="app">
     <h1>Dog of the Day</h1>
 
-    <button v-if="!codeRevealed" @click="handleClick">Click Me ({{ counter }}/5)</button>
+    <button type="button" v-if="!codeRevealed" @click="handleClick">Click Me ({{ counter }}/5)</button>
 
     <div v-if="codeRevealed && !unlocked">
       <p>Please enter this code to unlock your dog: <strong>{{ code }}</strong></p>
       <input type="text" v-model="userInput" placeholder="Enter code..." />
-      <button @click="checkCode">Submit</button>
+      <button type="button" @click="checkCode">Submit</button>
     </div>
 
     <div v-if="unlocked">
       <p>Tadaaaaa !!</p>
-      <img :src="dogImage" alt="Dog image" style="max-width: 300px;" />
+      <img :src="dogImage" alt="Dog image"/>
     </div>
 
     <p v-if="loading">Loading...</p>
