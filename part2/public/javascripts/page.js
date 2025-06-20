@@ -176,11 +176,12 @@ function downvote(index) {
 
 function login(){
 
-    let user = {
+    const user = {
         user: document.getElementById('username').value,
         pass: document.getElementById('password').value
     };
 
+    
     // Create AJAX Request
     var xmlhttp = new XMLHttpRequest();
 
