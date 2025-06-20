@@ -50,7 +50,7 @@
 
         async function getCurrentUser() {
           try {
-            const res = await fetch('/api/users/me', );
+            const res = await fetch('/api/users/me', { credentials: 'include' });
             if (!res.ok) throw new Error('Failed to load walk requests');
             user.value = await res.json();
           } catch (err) {
