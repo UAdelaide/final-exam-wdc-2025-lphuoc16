@@ -8,8 +8,8 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/api/dogs', async (req, res) => {
-  const [row] = await db.query(`
-    
+  const [rows] = await db.query(`
+    SELECT
   `)
 });
 module.exports = router;
