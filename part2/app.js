@@ -9,12 +9,12 @@ const app = express();
 
 app.use(express.json());
 app.use(session({
-  secret: 'a-very-secret-key',   
+  secret: 'a-very-secret-key',
   resave: false,
   saveUninitialized: false,
   cookie: {
     secure: false,
-    maxAge: 1000 * 60 * 60 * 24
+    maxAge: 1000 * 60 * 2
   }
 }));
 
