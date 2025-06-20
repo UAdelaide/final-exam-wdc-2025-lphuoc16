@@ -131,15 +131,13 @@
           }
         }
 
-        onMounted( async() => {
-          await loadDogs();
+        onMounted(() => {
           loadWalks();
         });
 
         return {
           form,
           walks,
-          dogs,
           message,
           error,
           submitWalkRequest
