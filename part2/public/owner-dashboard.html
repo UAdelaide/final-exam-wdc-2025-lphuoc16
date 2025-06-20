@@ -89,7 +89,11 @@
         const error = ref('');
 
         async function loadDogs() {
-          const res = await fetch('/api/mydogs')
+          try {
+            const res = await fetch('/api/mydogs');
+             dogs.value = await res.json();
+          }
+
         }
 
         async function loadWalks() {
