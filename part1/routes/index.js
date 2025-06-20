@@ -62,6 +62,7 @@ router.get('/api/walkers/summary', async (req, res) => {
       WHERE u.role = 'walker'
       GROUP BY u.user_id, u.username
     `);
+    res.json(rows);
   } catch (err) {
     res.status(500).json({ error: 'Internal server error' });
   }
