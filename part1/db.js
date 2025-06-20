@@ -2,7 +2,7 @@ const mysql = require('mysql2/promise');
 
 const db = mysql.createPool({
     // host: 'localhost',
-    socketPath = 
+    socketPath: '/var/run/mysqld/mysqld.sock',
     user: 'root',
     password: 'root',
     database: 'dogwalks'
