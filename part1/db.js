@@ -43,7 +43,7 @@ const db = mysql.createPool({
         VALUES
         (1, 2, '2025-06-01 12:00:00', 'accepted'),
         (3, 5, '2025-06-02 14:00:00', 'accepted'),
-        (3, 5, '2025-06-03 10:00:00', 'accepted')
+        (5, 2, '2025-06-03 10:00:00', 'accepted')
     `);
 
     await db.execute(`
