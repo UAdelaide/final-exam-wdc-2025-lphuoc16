@@ -10,8 +10,6 @@ const db = mysql.createPool({
 
 (async () => {
   try {
-
-
     // Insert data if table is empty
     await db.execute(`
         INSERT INTO Users (username, email, password_hash, role)
