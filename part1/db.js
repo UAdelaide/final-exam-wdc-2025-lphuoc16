@@ -6,6 +6,7 @@ const db = mysql.createPool({
     password: 'root',
     database: 'dogwalks'
 });
+
 (async () => {
   try {
 
