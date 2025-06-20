@@ -89,7 +89,7 @@
         const error = ref('');
 
         async function loadDogs() {
-          if (!user.value)
+          const res = await fetch('/mydogs')
         }
 
         async function loadWalks() {
