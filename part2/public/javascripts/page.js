@@ -261,7 +261,7 @@ async function loadDogsTable() {
         const tbody = document.querySelector('#dogsTable tbody');
         tbody.innerHTML = dogs.map((d) => `
         <tr>
-            <td>${d.dog_id}</td>
+            <td>#${d.dog_id}</td>
             <td>${d.dog_name}</td>
             <td>${d.dog_size}</td>
             <td>${d.owner_name}</td>
