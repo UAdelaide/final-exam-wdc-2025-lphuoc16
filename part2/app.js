@@ -8,6 +8,7 @@ const app = express();
 // Middleware
 
 app.use(express.json());
+// session
 app.use(session({
   secret: 'a-very-secret-key',
   resave: false,
