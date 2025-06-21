@@ -6,7 +6,7 @@ var db = require('../db');
 router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
 });
-
+// part 1
 router.get('/api/dogs', async (req, res) => {
   try {
     const [rows] = await db.query(`
