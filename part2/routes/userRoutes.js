@@ -66,7 +66,7 @@ router.post('/logout', async (req, res) => {
     res.json({ message: 'Logged out' });
   });
 });
-// 
+// get user's dog
 router.get('/mydogs', async (req, res) => {
   try {
     const ownerID = req.session.user.user_id;
@@ -81,7 +81,7 @@ router.get('/mydogs', async (req, res) => {
     res.status(500).json({ error: 'Failed to load your dogs' });
   }
 });
-
+// get dogs in homepage
 router.get('/dogs', async (req, res) => {
   try {
     const [rows] = await db.query(`
