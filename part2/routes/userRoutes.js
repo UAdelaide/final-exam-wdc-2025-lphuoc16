@@ -66,7 +66,7 @@ router.post('/logout', async (req, res) => {
     res.json({ message: 'Logged out' });
   });
 });
-
+// 
 router.get('/mydogs', async (req, res) => {
   try {
     const ownerID = req.session.user.user_id;
