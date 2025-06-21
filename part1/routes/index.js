@@ -53,7 +53,7 @@ router.get('/api/walkers/summary', async (req, res) => {
         ROUND(AVG(r.rating), 1) AS average_rating,
         COUNT(DISTINCT CASE WHEN wr.status = 'completed' THEN wr.request_id END) AS completed_tasks
       FROM Users u
-      LEFT JOIN WalkApplications wa ON u.user_id = wa.walker_id
+      LEFT JOIN WalkApplications wa ON u.user_id = wa.walker_id AND wa.status = 'accepted'
       LEFT JOIN WalkRequests wr ON wa.request_id = wr.request_id
       LEFT JOIN WalkRatings r ON r.request_id = wr.request_id AND r.walker_id = u.user_id
       WHERE u.role = 'walker'
